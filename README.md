@@ -37,9 +37,13 @@ java Main <inputFilePath> <outputDirPath> <pixelSize> <paletteSize>
 
 **Before:**
 - High-resolution image of a wave.
+![image](https://github.com/tripend/convert-to-pixel-art/assets/77321126/5c3b45a6-b46b-4c78-8f47-51845526f8ab)
+
 
 **After:**
 - Pixelated version with blocks of colors simplifying the complex scenery.
+![image](https://github.com/tripend/convert-to-pixel-art/assets/77321126/7334fe21-144d-404a-a9bf-ec82de11bbaf)
+
 
 ### Example 2: Limiting Colors
 **Command:**
@@ -48,9 +52,15 @@ java Main ../imgs/kingfisher.jpg ../output/ 100 5
 ```
 **Before:**
 - Detailed photo of a kingfisher.
+![image](https://github.com/tripend/convert-to-pixel-art/assets/77321126/8dec416e-b3df-4350-bcca-3fdf8dfac633)
+
 
 **After:**
 - Reduced to 5 colors, giving it a stark, stylized appearance.
+![image](https://github.com/tripend/convert-to-pixel-art/assets/77321126/4e3ad712-5c23-4641-85bf-5076358b2fb1)
+
+
+
 
 
 ## Detailed Command Description
