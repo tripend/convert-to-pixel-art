@@ -6,21 +6,36 @@ import javax.imageio.ImageIO;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length < 3) {
-            System.out.println("Usage: java Main <inputFilePath> <outputFilePath> <pixelSize>");
+        // Check if the correct number of arguments are passed
+        if (args.length < 4) {
+            System.out.println("Usage: java Main <inputFilePath> <outputDirPath> <pixelSize> <paletteSize>");
             return;
         }
 
+        // Parse command line arguments
         String inputFilePath = args[0];
-        String outputFilePath = args[1];
+        String outputDirPath = args[1];
         int pixelSize = Integer.parseInt(args[2]);
+        int paletteSize = Integer.parseInt(args[3]); // Parse the palette size argument
+
+        // Prepare files for input and output
+        File inputFile = new File(inputFilePath);
+        String outputFileName = inputFile.getName();
+        File outputDir = new File(outputDirPath);
+        File outputFile = new File(outputDir, outputFileName);
 
         try {
-            BufferedImage inputImage = ImageIO.read(new File(inputFilePath));
-            BufferedImage pixelArtImage = ProcessImage.convertToPixelArt(inputImage, pixelSize);
-            ProcessImage.saveJPEG(pixelArtImage, outputFilePath);
-            System.out.println("Pixel art image saved: " + outputFilePath);
+            // Read the input image
+            BufferedImage inputImage = ImageIO.read(inputFile);
+
+            // Convert the image to pixel art, passing the new paletteSize parameter
+            BufferedImage pixelArtImage = ProcessImage.convertToPixelArt(inputImage, pixelSize, paletteSize);
+
+            // Save the converted image as JPEG
+            ProcessImage.saveJPEG(pixelArtImage, outputFile.getAbsolutePath());
+            System.out.println("Pixel art image saved: " + outputFile.getAbsolutePath());
         } catch (IOException e) {
+            // Handle exceptions related to file I/O
             e.printStackTrace();
         }
     }
